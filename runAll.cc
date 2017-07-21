@@ -1,5 +1,5 @@
 /** Macro to run Atmospheric Systematics at Low and High scales. 
- *  Runs for data and MC to produce final multiplicty plots. 
+ *  Runs for data and MC to produce final multiplicity plots.
  *  @authors Jyotirmai Singh, Max Smiley  */
 
 #include <string> 
@@ -9,6 +9,10 @@
 #ifdef __MAKECINT__
 #pragma link C++ class std::vector<TH1*>;
 #endif
+
+/** Main function. Runs the entire systematics package.
+ *  @param dataName The name of the data file
+ *  @param mcName The name of the MC file. */
 void runAll(std::string dataName, std::string mcName) {
   gROOT->SetBatch(kTRUE);
   gROOT->ProcessLine(".L Systematic.cpp");
