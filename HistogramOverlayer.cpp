@@ -26,7 +26,8 @@ void renameHist(TH1* hist, std::string addon) {
 }
 
 void logCheck(TCanvas* canv, TH1* histData, TH1* histMC) {
-    if ((string(histData->GetName())).find("nfollowers") != std::string::npos && (string(histData->GetName())).find("eeffenergy") != std::string::npos) {
+    if ((string(histData->GetName())).find("nfollowers") != std::string::npos &&
+        (string(histData->GetName())).find("eeffenergy") != std::string::npos) {
       canv->SetLogx();
     }
     else {
@@ -40,7 +41,8 @@ void setDrawStyles(TCanvas* canv, TH1F* histData, TH1F* histMC) {
     histMC->SetMarkerColor(kRed);
     histMC->SetLineColor(kRed);
 
-    if ((string(histData->GetName())).find("nfollowers") != std::string::npos && (string(histData->GetName())).find("eeffenergy") != std::string::npos) {
+    if ((string(histData->GetName())).find("nfollowers") != std::string::npos &&
+        (string(histData->GetName())).find("eeffenergy") != std::string::npos) {
       histMC->SetFillColor(kRed);
       histMC->SetFillStyle(3001);
       styleMC = "e2";
