@@ -11,6 +11,8 @@
 #endif
 void runAll(std::string dataName, std::string mcName) {
   gROOT->SetBatch(kTRUE);
+  gROOT->ProcessLine(".x sysStyle.C");
+  gROOT->SetStyle("sysStyle");
   gROOT->ProcessLine(".L Systematic.cpp");
   gROOT->ProcessLine(".L HighScaleSystematics.cpp");
   gROOT->ProcessLine(".L LowScaleSystematics.cpp");
@@ -20,6 +22,7 @@ void runAll(std::string dataName, std::string mcName) {
   std::string dataCommand = ".x loop.cc(true, \"" + dataName + "\")";
   std::cout << dataCommand << std::endl;
   gROOT->ProcessLine(dataCommand.c_str());
+  gRandom->SetSeed(42);
   std::string mcCommand = ".x loop.cc(false, \"" +  mcName + "\")";
   gROOT->ProcessLine(mcCommand.c_str());
   gROOT->ProcessLine(".x superimposeDataMC.cpp(\"Systematics.root\", \"SystematicsData.root\")");

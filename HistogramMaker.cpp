@@ -204,7 +204,7 @@ HistogramMaker::HistogramInitializer() {
     nfollowersmean_sr_eeffenergy = new TH1F("nfollowersmean_sr_eeffenergy","Mean Number of Neutron Followers vs Prompt Single-Ring Energy; Single-ring prompt event energy (MeV); Mean number of neutron followers per bin",7,15,1e4);
     nfollowersmean_sr_eeffenergy_norm = new TH1F("nfollowersmean_sr_eeffenergy_norm","Normalization for Single-ring Prompt Event Energy; Single-ring prompt event energy (MeV); Number of events per bin",7,15,1e4);
     nfollowers_mr_eeffenergy = new TH2F("nfollowers_mr_eeffenergy","Number of Neutron Followers vs Prompt Multi-Ring Energy; Multi-ring prompt event energy (MeV); Number of neutron followers per bin",7,15,1e4,15,0,15);
-    nfollowersmean_mr_eeffenergy = new TH1F("nfollowersmean_mr_eeffenergy","Mean Number of Neutron Followers vs Prompt Single-Ring Energy; Multi-ring prompt event energy (MeV); Mean number of followers per bin",7,15,1e4);
+    nfollowersmean_mr_eeffenergy = new TH1F("nfollowersmean_mr_eeffenergy","Mean Number of Neutron Followers vs Multi-ring Prompt Energy; Multi-ring prompt event energy (MeV); Mean number of followers per bin",7,15,1e4);
     nfollowersmean_mr_eeffenergy_norm = new TH1F("nfollowersmean_mr_eeffenergy_norm","Normalization for Multi-ring Prompt Event Energy; Multi-ring prompt event energy (MeV); Number of events per bin",7,15,1e4);
     nfollowers_radial = new TH1F("nfollowers_radial", "Number of Followers", 100, 0, 6000);
     nfollowers_detected_radial = new TH1F("nfollowers_detected_radial", "Number of Detected Followers; Radius/mm; Efficiency", 100, 0, 6000);

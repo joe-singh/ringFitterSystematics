@@ -1,6 +1,7 @@
 *.xml
 *.txt
 *.C
+!sysStyle.C
 *.iml
 .idea/inspectionProfiles/
 cmake-build-debug/
