@@ -91,6 +91,8 @@ HistogramMaker::HistogramMaker(TFile* file)
         nfollowers_mr_eeffenergy = get2DHisto(nfollowers_mr_eeffenergy, file);
         nfollowersmean_mr_eeffenergy = getHisto(nfollowersmean_mr_eeffenergy, file);
         nfollowersmean_mr_eeffenergy_norm = getHisto(nfollowersmean_mr_eeffenergy_norm, file);
+        nfollowers_radial = getHisto(nfollowers_radial, file);
+        nfollowers_detected_radial = getHisto(nfollowers_detected_radial, file);
       }
    }
 
@@ -138,6 +140,8 @@ HistogramMaker::HistogramMaker(TFile* file)
     hists.push_back(nfollowers_mr_eeffenergy);
     hists.push_back(nfollowersmean_mr_eeffenergy);
     hists.push_back(nfollowersmean_mr_eeffenergy_norm);
+    hists.push_back(nfollowers_radial);
+    hists.push_back(nfollowers_detected_radial);
 }
 
 /** Default constructor. Will make all necessary histograms
@@ -202,6 +206,8 @@ HistogramMaker::HistogramInitializer() {
     nfollowers_mr_eeffenergy = new TH2F("nfollowers_mr_eeffenergy","Number of Neutron Followers vs Prompt Multi-Ring Energy; Multi-ring prompt event energy (MeV); Number of neutron followers per bin",7,15,1e4,15,0,15);
     nfollowersmean_mr_eeffenergy = new TH1F("nfollowersmean_mr_eeffenergy","Mean Number of Neutron Followers vs Prompt Single-Ring Energy; Multi-ring prompt event energy (MeV); Mean number of followers per bin",7,15,1e4);
     nfollowersmean_mr_eeffenergy_norm = new TH1F("nfollowersmean_mr_eeffenergy_norm","Normalization for Multi-ring Prompt Event Energy; Multi-ring prompt event energy (MeV); Number of events per bin",7,15,1e4);
+    nfollowers_radial = new TH1F("nfollowers_radial", "Number of Followers", 100, 0, 6000);
+    nfollowers_detected_radial = new TH1F("nfollowers_detected_radial", "Number of Detected Followers; Radius/mm; Efficiency", 100, 0, 6000);
 
     binLogX(nfollowers_eeffenergy, false);
     binLogX(nfollowersmean_eeffenergy,false);
@@ -280,6 +286,8 @@ void HistogramMaker::writeAllToFile(TFile* file)
     file->WriteTObject(nfollowers_mr_eeffenergy);
     file->WriteTObject(nfollowersmean_mr_eeffenergy);
     file->WriteTObject(nfollowersmean_mr_eeffenergy_norm);
+    file->WriteTObject(nfollowers_radial);
+    file->WriteTObject(nfollowers_detected_radial);
     this->removeAll();
 }
 

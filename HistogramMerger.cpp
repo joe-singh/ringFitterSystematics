@@ -268,6 +268,12 @@ void HistogramMerger::makeHistograms()
     cnfollowmean_eeffenergy->cd(6)->SetLogx();
     histsNominal->nfollowers_mr_eeffenergy->Draw("colz");
 
+    TCanvas* neutron_efficiency = new TCanvas("neutronEfficiency", "Neutron Efficiency", 1000, 600);
+    histsNominal->nfollowers_radial->Sumw2();
+    histsNominal->nfollowers_detected_radial->Sumw2();
+    histsNominal->nfollowers_detected_radial->Divide(histsNominal->nfollowers_radial);
+    histsNominal->nfollowers_detected_radial->Draw("e1");
+
     _outFile->WriteTObject(cfitpos);
     _outFile->WriteTObject(cseedpos);
     _outFile->WriteTObject(cprompt);

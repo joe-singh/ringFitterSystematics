@@ -51,6 +51,8 @@ public:
     TH2F* nfollowers_mr_eeffenergy;
     TH1F* nfollowersmean_mr_eeffenergy;
     TH1F* nfollowersmean_mr_eeffenergy_norm;
+    TH1F* nfollowers_radial;
+    TH1F* nfollowers_detected_radial;
 
     std::vector<TH1*> hists;
 

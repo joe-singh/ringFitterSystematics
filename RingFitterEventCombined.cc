@@ -246,13 +246,16 @@ void RingFitterEvent::Loop(int USEWATER, int dir, bool data)
                 histograms->hmichele_energy2->Fill(followers_energy[ifol][2]);
             }
 
-            // Neutron Cuts
-            if (neutronCut(ifol, this)) continue;
-
             double xPos = followers_ftkpos_fX[ifol];
             double yPos = followers_ftkpos_fY[ifol];
             double zPos = followers_ftkpos_fZ[ifol];
             double followerFTK = followers_energy[ifol][2];
+
+            // Fill radial histogram with neutron radius
+            histograms->nfollowers_radial->Fill(sqrt(norm(xPos, yPos, zPos)));
+
+            // Neutron Cuts
+            if (neutronCut(ifol, this)) continue;
 
             histograms->hfollowers_nhits->Fill(followers_nhit[ifol]);
             histograms->hfollowers_deltat->Fill(followers_deltat[ifol]);
@@ -323,6 +326,7 @@ void RingFitterEvent::Loop(int USEWATER, int dir, bool data)
             double wMinus = LSS->getwMinus(nominalEnergy);
 
            if (sqrt(systematicDistance) <= 6000.0 && systematicEnergy > 4.0) {
+               histograms->nfollowers_detected_radial->Fill(sqrt(normalSquareDistance));
                switch (dir) {
                    case 0:
                        nFolSystematic++;
