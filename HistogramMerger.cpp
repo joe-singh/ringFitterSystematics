@@ -282,6 +282,7 @@ void HistogramMerger::makeHistograms()
     _outFile->WriteTObject(cnfollow);
     _outFile->WriteTObject(cnhit_nofollow);
     _outFile->WriteTObject(cnfollowmean_eeffenergy);
+    _outFile->WriteTObject(neutron_efficiency);
 
     // Write histograms to output file for later use - i.e. superimposing data and MC
     histsNominal->writeAllToFileVec(_outFile);
